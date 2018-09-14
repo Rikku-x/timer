@@ -1,0 +1,27 @@
+body {
+    background: url("http://idifl.com/wp-content/uploads/Palm-Beach-2.jpg") no-repeat;
+    background-size: 100%;
+}
+
+/* h1 {
+    color: rgb(229, 229, 241);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+} */
+
+div.container4 {
+    text-align: center;
+    height: 3em;
+    /* position: absolute; */
+    color: rgb(229, 229, 241);
+    font-size: 700%;
+    font-weight: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* top: 26%;
+    left: 26%; */
+    margin-top: 15%;
+}
+
+/* #text {
+    opacity: 0.9;
+} */
