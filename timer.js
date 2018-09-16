@@ -1,55 +1,48 @@
-let timer;
-let timerCanceling = false;
-let intervalID
+let timerCanceling = false
+let intervalID, timer
 
-function startTimer(duration, display) {
-    timer = duration;
-    let minutes, seconds;
+let startTimer = (duration, display) => {
+    timer = duration
+    let minutes, seconds
     return setInterval(function () {
         minutes = parseInt(timer / 60, 10)
-        seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent = `${minutes} : ${seconds}`;
+        seconds = parseInt(timer % 60, 10)
+        minutes = minutes < 10 ? "0" + minutes : minutes
+        seconds = seconds < 10 ? "0" + seconds : seconds
+        display.textContent = `${minutes} : ${seconds}`
         zeroTimer()
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
+        timer--
+    }, 1000)
 }
-function zeroTimer() {
-    console.log("theEnd")
+let zeroTimer = () => {
     if (timer == 0) {
         clearInterval(intervalID)
-        let display = document.querySelector('#time');
-        let text = document.getElementById("text");
-        text.innerText = "good job!";
-        display.textContent = "00 : 00";
+        let display = document.querySelector('#time')
+        let text = document.querySelector("#text")
+        text.innerText = "good job!"
+        display.textContent = "00 : 00"
     }
 }
 
-window.onload = function () {
-    console.log("onload")
-    let threeMinutes = 60 * 3;
-    let display = document.querySelector('#time');
-    intervalID = startTimer(threeMinutes, display);
-};
-
-window.onmousemove = function () {
-    clearInterval(intervalID);
-    let text = document.getElementById("text");
-    text.innerText = "one more time!";
+window.onload = () => {
+    let threeMinutes = 60 * 3
+    let display = document.querySelector('#time')
+    intervalID = startTimer(threeMinutes, display)
+}
+window.onmousemove = () => {
+    clearInterval(intervalID)
+    let text = document.querySelector("#text")
+    text.innerText = "one more time!"
     if (!timerCanceling) {
-        timerCanceling = true;
+        timerCanceling = true
         setTimeout(function () {
-            let threeMinutes = 60 * 3 - 1;
-            let display = document.querySelector('#time');
-            text.innerText = "keep calm for";
+            let threeMinutes = 60 * 3 - 1
+            let display = document.querySelector('#time')
+            text.innerText = "keep calm for"
             display.textContent = "03 : 00"
             intervalID = startTimer(threeMinutes, display)
-            timerCanceling = false;
-        }, 3000);
+            timerCanceling = false
+        }, 3000)
     }
 }
-
-window.onkeypress = window.onmousemove
+window.onkeypress = window.onmousedown = window.onmousemove
